@@ -1,16 +1,20 @@
 "use client";
 import React from "react";
-import { useAppSelector } from "@/store/redux";
+import { useAppDispatch, useAppSelector } from "@/store/redux";
 import { Menu } from "lucide-react";
+import { setIsSidebarCollapsed } from "@/state";
 
 const ToggleSidebarMenu = () => {
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
+  const dispatch = useAppDispatch();
   return (
     <>
       {!isSidebarCollapsed ? null : (
-        <button onClick={() => console.log("toggle sidebar")}>
+        <button
+          onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}
+        >
           <Menu className="h-8 w-8 dark:text-white" />
         </button>
       )}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAppSelector } from "@/store/redux";
+import { useAppDispatch, useAppSelector } from "@/store/redux";
 import {
   AlertCircle,
   AlertOctagon,
@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { SidebarLink } from "./utils";
 import ProjectList from "./utils/projectList";
+import { setIsSidebarCollapsed } from "@/state";
 
 const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl
     transition-all duration-300 h-full z-40 dark:bg-black overflow-y-auto bg-white
@@ -31,6 +32,7 @@ const Sidebar = () => {
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
+  const dispatch = useAppDispatch();
 
   return (
     <div
@@ -44,9 +46,7 @@ const Sidebar = () => {
           {isSidebarCollapsed ? null : (
             <button
               className="py-3"
-              onClick={() => {
-                console.log("yet to be implemented");
-              }}
+              onClick={() => dispatch(setIsSidebarCollapsed(true))}
             >
               <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" />
             </button>

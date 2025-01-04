@@ -18,7 +18,7 @@ const NavbarRightActionMenu = () => {
             : `h-min w-min rounded p-2 hover:bg-gray-100`
         }
       >
-        Settings
+        <span className="dark:text-white">Settings</span>
       </Link>
     </>
   );

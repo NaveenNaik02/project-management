@@ -12,7 +12,7 @@ const handleAddNewTask = async (
     if (!parsedData.success || !parsedData.data) {
       return parsedData;
     }
-    const res = await fetch("http://localhost:8080/tasks", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
